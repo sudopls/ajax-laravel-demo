@@ -9,7 +9,7 @@ $(document).ready(function($){
         // Spara formulärelementet i en var
         var form = $('#addEditBook');
 
-        console.log(form);
+        console.log(id);
 
         // Vid klick, skriv ut formulär på den rad du klickar på
         $("#" + id).append(form);
@@ -18,11 +18,10 @@ $(document).ready(function($){
         var title = $(".title-" + id).text();
         var author = $(".author-" + id).text();
 
-        console.log(author);
-
         // Uppdatera input med dina sparade värden
         $("input#title").val(title);
         $("input#author").val(author);
+        $("input#bookId").val(id);
     });
 
     $('#addEditBook').on('submit', function(event) {
@@ -37,7 +36,8 @@ $(document).ready(function($){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:"POST",
-            url: "books/edit",
+            url: "edit-book",
+            dataType: "json",
             data: form_data,
             success: function(data) {
                 console.log(data);

@@ -20,18 +20,21 @@
 
                     <p class="author-{{ $book->id }}">{{ $book->author }}</p>
 
+                    <p>{{ $book->id }}</p>
                     <button class="edit-btn">Edit Book</button>
                 </div>
                 <hr>
             @endforeach
         </div>
 
-        <form action="javascript:void(0)" id="addEditBook" method="POST">
+        <form id="addEditBook" method="POST">
             <label for="title">Title: </label>
             <input type="text" name="title" id="title" value="">
 
             <label for="author">Author: </label>
             <input type="text" name="author" id="author" value="">
+
+            <input type="hidden" name="bookId" id="bookId" value="">
 
             <button type="submit" class="save-button" id="btn-save-{{ $book->id }}">Save Changes</button>
         </form>

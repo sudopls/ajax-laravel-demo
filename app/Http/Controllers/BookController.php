@@ -37,7 +37,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book   =   Book::updateOrCreate(
+            [
+                'id' => $request->id
+            ],
+            [
+                'title' => $request->title,
+                'author' => $request->author,
+            ]);
+
+return response()->json(['success' => true]);
     }
 
     /**
@@ -57,7 +66,7 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(Request $request)
     {
 
     }
